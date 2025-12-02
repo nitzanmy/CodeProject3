@@ -1,0 +1,396 @@
+<!DOCTYPE html>
+<html lang="he" dir="rtl">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>מערכת שעות - מיכל פילאטיס</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet">
+    
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            margin: 0;
+            padding: 0;
+            background-color: #f9f9f9;
+        }
+
+        header {
+            background-color: #fff;
+            padding: 20px;
+            text-align: center;
+            border-bottom: 1px solid #ddd;
+        }
+
+        h1 { margin: 0; color: #333; }
+
+        /* --- לוח הודעות --- */
+        .notice-board {
+            background-color: #fff3cd;
+            border: 1px solid #ffeeba;
+            color: #856404;
+            padding: 20px;
+            margin: 20px auto;
+            max-width: 1200px;
+            border-radius: 8px;
+        }
+
+        .notice-board h2 {
+            margin-top: 0;
+            font-size: 20px;
+            border-bottom: 1px solid #e6dbb9;
+            padding-bottom: 10px;
+        }
+
+        .notice-item {
+            background-color: rgba(255,255,255,0.5);
+            padding: 10px;
+            margin-bottom: 10px;
+            border-radius: 5px;
+            border-right: 4px solid #d63384;
+        }
+
+        /* --- כפתורי ניווט בין שבועות --- */
+        .week-navigation {
+            display: flex;
+            justify-content: space-between; /* דוחף את הכפתורים לקצוות (ימין ושמאל) */
+            align-items: center;
+            margin: 20px auto;
+            max-width: 1200px; /* רוחב תואם ללוח ההודעות וללוח השנה */
+            padding: 0 10px; /* רווח קטן בצדדים */
+        }
+
+        .nav-btn {
+            background-color: #333;
+            color: white;
+            border: none;
+            padding: 10px 20px;
+            border-radius: 5px;
+            cursor: pointer;
+            font-size: 16px;
+            transition: background 0.3s;
+            display: flex;
+            align-items: center;
+            gap: 10px;
+        }
+
+        .nav-btn:hover {
+            background-color: #555;
+        }
+
+        /* --- לוח שנה שבועי --- */
+        .schedule-container {
+            max-width: 1400px;
+            margin: 0 auto 40px auto;
+            padding: 0 10px;
+        }
+
+        .week-grid {
+            display: grid;
+            grid-template-columns: repeat(7, 1fr); 
+            gap: 15px;
+        }
+
+        .day-column {
+            display: flex;
+            flex-direction: column;
+        }
+
+        /* --- שינוי בגודל התאריך --- */
+        .date-display {
+            text-align: center;
+            font-weight: bold;
+            color: #d63384; /* צבע ורדרד בולט (אפשר לשנות לשחור אם תרצי) */
+            margin-bottom: 8px;
+            font-size: 22px; /* הגדלתי משמעותית */
+        }
+
+        .day-header {
+            text-align: center;
+            background-color: #333;
+            color: white;
+            padding: 10px;
+            border-radius: 8px 8px 0 0;
+            font-weight: bold;
+        }
+
+        .day-content {
+            background-color: white;
+            padding: 10px;
+            border-radius: 0 0 10px 10px;
+            box-shadow: 0 2px 5px rgba(0,0,0,0.1);
+            min-height: 400px;
+            flex: 1;
+        }
+
+        /* --- כרטיסייה של אימון --- */
+        .class-card {
+            background-color: #f8f9fa;
+            border: 1px solid #e9ecef;
+            border-radius: 8px;
+            padding: 15px;
+            margin-bottom: 15px;
+            transition: transform 0.2s;
+            display: flex;
+            flex-direction: column;
+            gap: 8px;
+        }
+
+        .class-card:hover {
+            transform: translateY(-3px);
+            border-color: #d63384;
+            box-shadow: 0 4px 8px rgba(0,0,0,0.1);
+        }
+
+        .class-time {
+            font-weight: bold;
+            color: #d63384;
+            font-size: 14px;
+        }
+
+        .class-name {
+            font-size: 16px;
+            font-weight: bold;
+            color: #333;
+        }
+
+        .class-details {
+            font-size: 13px;
+            color: #555;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        .zoom-tag {
+            background-color: #e3f2fd;
+            color: #0d47a1;
+            padding: 2px 6px;
+            border-radius: 4px;
+            font-size: 11px;
+            font-weight: bold;
+        }
+
+        .register-btn {
+            background-color: #28a745;
+            color: white;
+            border: none;
+            border-radius: 4px;
+            padding: 6px 0;
+            cursor: pointer;
+            font-size: 14px;
+            margin-top: 5px;
+            transition: background 0.2s;
+        }
+
+        .register-btn:hover {
+            background-color: #218838;
+        }
+
+        @media (max-width: 768px) {
+            .week-grid {
+                grid-template-columns: 1fr;
+            }
+            .date-display {
+                margin-top: 20px;
+            }
+        }
+    </style>
+</head>
+<body>
+
+    <div id="navbar-placeholder"></div>
+
+    <header>
+        <h1>מערכת שעות שבועית</h1>
+        
+    </header>
+
+    <div class="notice-board">
+        <h2><i class="fas fa-bullhorn"></i> לוח הודעות ועדכונים</h2>
+        <div class="notice-item">
+            שימו לב: השיעור של הערב הוקדם לשעה 19:00.
+        </div>
+    </div>
+
+    <div class="week-navigation">
+        <button class="nav-btn" onclick="changeWeek(-1)">
+            <i class="fas fa-chevron-right"></i> שבוע שעבר
+        </button>
+        
+        <button class="nav-btn" onclick="changeWeek(1)">
+            שבוע הבא <i class="fas fa-chevron-left"></i>
+        </button>
+    </div>
+
+    <div class="schedule-container">
+        <div class="week-grid">
+
+            <div class="day-column">
+                <div class="date-display" id="date-0"></div>
+                <div class="day-header">יום ראשון</div>
+                
+                <div class="day-content">
+                    <div class="class-card">
+                        <div class="class-time">08:00 - 09:00</div>
+                        <div class="class-name">פילאטיס מזרן</div>
+                        <div class="class-details">
+                            <span><i class="fas fa-users"></i> 8/10</span>
+                        </div>
+                        <button class="register-btn" onclick="alert('נרשמת לשיעור!')">הרשמה לשיעור</button>
+                    </div>
+
+                    <div class="class-card">
+                        <div class="class-time">18:00 - 19:00</div>
+                        <div class="class-name">פילאטיס מכשירים</div>
+                        <div class="class-details">
+                            <span><i class="fas fa-users"></i> 4/6</span>
+                        </div>
+                        <button class="register-btn" onclick="alert('נרשמת לשיעור!')">הרשמה לשיעור</button>
+                    </div>
+                </div>
+            </div>
+
+            <div class="day-column">
+                <div class="date-display" id="date-1"></div>
+                <div class="day-header">יום שני</div>
+                
+                <div class="day-content">
+                    <div class="class-card">
+                        <div class="class-time">09:00 - 09:45</div>
+                        <div class="class-name">בוקר אנרגטי</div>
+                        <div class="class-details">
+                            <span><i class="fas fa-users"></i> 15</span>
+                            <span class="zoom-tag">ZOOM</span>
+                        </div>
+                        <button class="register-btn" onclick="alert('נרשמת לשיעור!')">הרשמה לשיעור</button>
+                    </div>
+                </div>
+            </div>
+
+            <div class="day-column">
+                <div class="date-display" id="date-2"></div>
+                <div class="day-header">יום שלישי</div>
+                
+                <div class="day-content">
+                    <div class="class-card">
+                        <div class="class-time">20:00 - 21:00</div>
+                        <div class="class-name">Core Blast</div>
+                        <div class="class-details">
+                            <span><i class="fas fa-users"></i> 10/10</span>
+                        </div>
+                        <button class="register-btn" onclick="alert('רשימת המתנה (מלא)')" style="background-color:orange;">הרשמה להמתנה</button>
+                    </div>
+                </div>
+            </div>
+
+            <div class="day-column">
+                <div class="date-display" id="date-3"></div>
+                <div class="day-header">יום רביעי</div>
+                <div class="day-content">
+                    <p style="text-align:center; color:#999; margin-top:20px;">אין שיעורים</p>
+                </div>
+            </div>
+
+            <div class="day-column">
+                <div class="date-display" id="date-4"></div>
+                <div class="day-header">יום חמישי</div>
+                <div class="day-content">
+                    <div class="class-card">
+                        <div class="class-time">17:00 - 18:00</div>
+                        <div class="class-name">מתיחות ושחרור</div>
+                        <div class="class-details">
+                            <span><i class="fas fa-users"></i> 5/12</span>
+                            <span class="zoom-tag">ZOOM</span>
+                        </div>
+                        <button class="register-btn" onclick="alert('נרשמת לשיעור!')">הרשמה לשיעור</button>
+                    </div>
+                </div>
+            </div>
+
+            <div class="day-column">
+                <div class="date-display" id="date-5"></div>
+                <div class="day-header">יום שישי</div>
+                <div class="day-content">
+                    <div class="class-card">
+                        <div class="class-time">08:30 - 09:30</div>
+                        <div class="class-name">פילאטיס קלאסי</div>
+                        <div class="class-details">
+                            <span><i class="fas fa-users"></i> 9/10</span>
+                        </div>
+                        <button class="register-btn" onclick="alert('נרשמת לשיעור!')">הרשמה לשיעור</button>
+                    </div>
+                </div>
+            </div>
+
+            <div class="day-column">
+                <div class="date-display" id="date-6"></div>
+                <div class="day-header">יום שבת</div>
+                <div class="day-content">
+                    <p style="text-align:center; color:#999; margin-top:20px;">מנוחה</p>
+                </div>
+            </div>
+
+        </div>
+    </div>
+
+    <div id="footer-placeholder"></div>
+
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>
+
+    <script>
+        
+        // 2. טעינת ה-Navbar
+        fetch('navbar.html')
+            .then(response => response.text())
+            .then(data => {
+                document.getElementById('navbar-placeholder').innerHTML = data;
+            });
+
+        fetch('footer.html')
+            .then(response => response.text())
+            .then(data => {
+                document.getElementById('footer-placeholder').innerHTML = data;
+            });
+
+        // --- ניהול תאריכים ---
+        let currentWeekOffset = 0;
+
+        function setWeeklyDates() {
+            const today = new Date();
+            
+            // חישוב התאריך הנוכחי + ההזזה (שבועות קדימה/אחורה)
+            const currentViewDate = new Date();
+            currentViewDate.setDate(today.getDate() + (currentWeekOffset * 7));
+
+            const currentDayOfWeek = currentViewDate.getDay(); // 0-6
+
+            // מציאת יום ראשון של אותו שבוע
+            const startOfWeek = new Date(currentViewDate);
+            startOfWeek.setDate(currentViewDate.getDate() - currentDayOfWeek);
+
+            // לולאה לעדכון 7 הימים
+            for (let i = 0; i < 7; i++) {
+                let loopDate = new Date(startOfWeek);
+                loopDate.setDate(startOfWeek.getDate() + i);
+
+                let dateString = loopDate.toLocaleDateString('he-IL', { day: 'numeric', month: 'numeric' });
+                
+                let element = document.getElementById(`date-${i}`);
+                if (element) {
+                    element.textContent = dateString;
+                }
+            }
+            // הסרתי את שורת הקוד שמעדכנת את טווח התאריכים כי ביקשת למחוק אותו
+        }
+
+        function changeWeek(direction) {
+            currentWeekOffset += direction;
+            setWeeklyDates();
+        }
+
+        setWeeklyDates();
+    </script>
+
+</body>
+</html>
