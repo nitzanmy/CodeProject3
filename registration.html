@@ -1,0 +1,122 @@
+<!DOCTYPE html>
+<html lang="he" dir="rtl">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>הרשמה - מיכל פילאטיס</title>
+</head>
+<body>
+
+    <h1>ברוכה הבאה לסטודיו של מיכל</h1>
+    <h3>אנא מלאו את הפרטים הבאים:</h3>
+
+    <form>
+        <div>
+            <label for="firstName">שם פרטי:</label><br>
+            <input type="text" id="firstName" name="firstName" required>
+        </div>
+        <br>
+
+        <div>
+            <label for="lastName">שם משפחה:</label><br>
+            <input type="text" id="lastName" name="lastName" required>
+        </div>
+        <br>
+
+        <div>
+            <label for="birthdate">תאריך לידה:</label><br>
+            <input type="date" id="birthdate" name="birthdate" required>
+        </div>
+        <br>
+
+        <div>
+            <label for="city">מקום מגורים:</label><br>
+            <input type="text" id="city" name="city">
+        </div>
+        <br>
+
+        <div>
+            <label>מספר טלפון:</label><br>
+            
+            <div style="direction: ltr; display: flex; justify-content: flex-end; gap: 5px;">
+                <select name="phonePrefix" required>
+                    <option value="050">050</option>
+                    <option value="052">052</option>
+                    <option value="053">053</option>
+                    <option value="054">054</option>
+                    <option value="055">055</option>
+                    <option value="058">058</option>
+                </select>
+                
+                - 
+
+                <input type="tel" name="phoneNumber" placeholder="המשך המספר" pattern="[0-9]{7}" required>
+            </div>
+        </div>
+        <br>
+
+        <div>
+            <label for="email">אימייל:</label><br>
+            <input type="email" id="email" name="email" required>
+        </div>
+        <br>
+
+        <div>
+            <label for="password">סיסמא (חייבת לכלול אותיות ומספרים):</label><br>
+            <input type="password" id="password" name="password" pattern="(?=.*[A-Za-z])(?=.*\d)[A-Za-z\d]{6,}" title="הסיסמא חייבת להכיל לפחות 6 תווים, כולל מספר אחד ואות אחת" required>
+        </div>
+        <br>
+
+        <div>
+            <label for="confirmPassword">אימות סיסמא:</label><br>
+            <input type="password" id="confirmPassword" name="confirmPassword" required>
+        </div>
+        <br>
+
+        <div>
+            <label>האם מתאמן באופן קבוע?</label><br>
+            
+            <input type="radio" id="habit1" name="trainingHabits" value="over_8" required>
+            <label for="habit1">מתאמן מעל 8 אימונים בחודש</label><br>
+
+            <input type="radio" id="habit2" name="trainingHabits" value="between_4_8">
+            <label for="habit2">מתאמן בין 4-8 אימונים בחודש</label><br>
+
+            <input type="radio" id="habit3" name="trainingHabits" value="regular">
+            <label for="habit3">מתאמן באופן קבוע</label><br>
+
+            <input type="radio" id="habit4" name="trainingHabits" value="not_training">
+            <label for="habit4">לא מתאמן כרגע</label>
+        </div>
+        <br>
+
+        <div>
+            <a href="https://docs.google.com/forms/d/e/1FAIpQLSfmtBn1AUXFf8qQMP3BC6aQK7Z-2mbS54zbtnt8jqQ1V9ldVA/viewform" target="_blank">
+                <button type="button">נא למלא את הצהרת הבריאות (טופס חיצוני)</button>
+            </a>
+        </div>
+        <br>
+
+        <div>
+            <label for="comments">הערות נוספות:</label><br>
+            <textarea id="comments" name="comments" rows="4" cols="50"></textarea>
+        </div>
+        <br>
+
+        <button type="submit">הרשמה</button>
+
+    </form>
+
+    <hr>
+    <div id="footer-placeholder"></div>
+
+    <script>
+        fetch('footer.html')
+            .then(response => response.text())
+            .then(data => {
+                document.getElementById('footer-placeholder').innerHTML = data;
+            });
+    </script>
+
+</body>
+</html>
