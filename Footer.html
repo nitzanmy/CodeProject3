@@ -1,0 +1,108 @@
+<!-- בכל עמוד להוסיף את הדברים הבאים 
+במקום שבו הfooter מופיע לרשום - 
+ <div id="footer-placeholder"></div>
+
+ בסוף הbody להוסיף את הסקריפט הבא -
+ <script>
+    // טוען את הפוטר מקובץ חיצוני
+    fetch('footer.html')
+        .then(response => response.text())
+        .then(data => {
+            document.getElementById('footer-placeholder').innerHTML = data;
+        });
+</script>
+-->
+
+
+
+<!-- ייבוא איקוניים -->
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+
+<style>
+    /* --- עיצוב הפוטר --- */
+    .site-footer {
+        background-color: #f8f9fa;
+        color: #333;
+        padding: 40px 20px;
+        text-align: center;
+        border-top: 1px solid #e1e1e1;
+        width: 100%; /* מוודא שזה תופס את כל הרוחב */
+        box-sizing: border-box; /* מונע גלישה לצדדים */
+    }
+
+    .footer-content {
+        max-width: 1200px;
+        margin: 0 auto;
+        display: flex;
+        flex-direction: column;
+        gap: 15px;
+        align-items: center;
+    }
+
+    .social-links {
+        margin-bottom: 10px;
+    }
+
+    /* עיצוב האייקונים של הרשתות החברתיות */
+    .social-links a {
+        color: #333;
+        font-size: 28px;
+        margin: 0 15px;
+        transition: color 0.3s ease;
+        text-decoration: none;
+        display: inline-block;
+    }
+
+    .social-links a:hover {
+        color: #d63384;
+    }
+
+    .legal-links {
+        display: flex;
+        gap: 20px;
+        font-size: 14px;
+    }
+
+    .legal-links a {
+        color: #555;
+        text-decoration: none;
+        transition: color 0.3s;
+    }
+
+    .legal-links a:hover {
+        text-decoration: underline;
+        color: #000;
+    }
+
+    .copyright {
+        margin-top: 20px;
+        font-size: 12px;
+        color: #777;
+    }
+</style>
+
+<footer class="site-footer">
+    <div class="footer-content">
+        
+        <div class="social-links">
+            <a href="https://wa.me/972546202296" target="_blank" title="ווצאפ">
+                <i class="fab fa-whatsapp"></i>
+            </a>
+            
+            <a href="https://www.instagram.com/michal_pilates_?igsh=MXF4dWlrNDdoazdmeQ==" target="_blank" title="אינסטגרם">
+                <i class="fab fa-instagram"></i>
+            </a>
+        </div>
+
+        <div class="legal-links">
+            <a href="docs/terms.pdf" target="_blank">תנאי שימוש באתר</a>
+            <a href="docs/cancellation.docx" target="_blank">מדיניות ביטולים</a>
+        </div>
+
+        <div class="copyright">
+            &copy; 2025 [Michal Pilates]
+        </div>
+    </div>
+</footer>
+
+
