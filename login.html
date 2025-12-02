@@ -1,0 +1,140 @@
+<!DOCTYPE html>
+<html lang="he" dir="rtl">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>התחברות - מיכל פילאטיס</title>
+
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            text-align: center;
+            margin: 0;
+            padding: 20px;
+        }
+
+        .top-image {
+            max-width: 300px;
+            width: 100%;
+            height: auto;
+            border-radius: 10px;
+            margin-bottom: 10px;
+        }
+
+        .login-box {
+            border: 1px solid #ccc;
+            padding: 30px;
+            border-radius: 15px;
+            max-width: 400px;
+            margin: 20px auto;
+            box-shadow: 0 4px 8px rgba(0,0,0,0.1);
+            background-color: #fff;
+        }
+
+        /* --- השינוי הגדול נמצא כאן --- */
+        /* מחלקה לשורה בטופס שמחזיקה גם תווית וגם שדה */
+        .form-row {
+            display: flex;         /* מסדר את האלמנטים בשורה אחת */
+            align-items: center;   /* מוודא שהם מיושרים לגובה (אמצע) */
+            margin-bottom: 15px;   /* רווח בין השורות */
+        }
+
+        /* עיצוב הכיתוב (אימייל/סיסמא) */
+        .form-row label {
+            width: 80px;           /* רוחב קבוע לכיתוב כדי שהתיבות יתחילו באותו קו */
+            margin-left: 10px;     /* רווח קטן בין המילה לתיבה */
+            font-weight: bold;
+            text-align: right;     /* יישור הטקסט לימין */
+        }
+
+        /* עיצוב תיבת הטקסט */
+        .form-row input {
+            flex: 1;               /* התיבה תתפוס את כל המקום שנשאר בשורה */
+            padding: 8px;
+            border: 1px solid #ddd;
+            border-radius: 5px;
+        }
+        /* --------------------------- */
+
+        button {
+            padding: 10px 20px;
+            background-color: #333;
+            color: white;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+            font-size: 16px;
+            width: 100%;
+            margin-top: 10px;
+        }
+
+        button:hover {
+            background-color: #555;
+        }
+
+        .secondary-btn {
+            background-color: transparent;
+            color: #333;
+            text-decoration: underline;
+            margin-top: 10px;
+            border: 1px solid #333;
+        }
+        
+        .forgot-pass {
+            display: block;
+            margin-bottom: 15px;
+            font-size: 14px;
+            color: #666;
+            text-decoration: none;
+            text-align: left; /* הזזתי את "שכחתי סיסמא" לצד שמאל שייראה טבעי */
+        }
+    </style>
+</head>
+<body>
+
+    <img src="images/loginPhoto.jpg" alt="מיכל פילאטיס" class="top-image">
+
+    <h1>ברוכים הבאים לפילאטיס של מיכל</h1>
+
+    <div class="login-box">
+        
+        <form action="home.html">
+            
+            <div class="form-row">
+                <label for="email">אימייל:</label>
+                <input type="email" id="email" required placeholder="הכנס אימייל">
+            </div>
+
+            <div class="form-row">
+                <label for="password">סיסמא:</label>
+                <input type="password" id="password" required placeholder="הכנס סיסמא">
+            </div>
+
+            <a href="#" class="forgot-pass">שכחתי סיסמא</a>
+
+            <button type="submit">התחברות</button>
+        </form>
+
+        <hr style="margin: 20px 0;">
+
+        <div>
+            <p>אין משתמש?</p>
+            <a href="registration.html">
+                <button class="secondary-btn">רוצה להירשם</button>
+            </a>
+        </div>
+
+    </div>
+
+    <div id="footer-placeholder"></div>
+
+    <script>
+        fetch('footer.html')
+            .then(response => response.text())
+            .then(data => {
+                document.getElementById('footer-placeholder').innerHTML = data;
+            });
+    </script>
+
+</body>
+</html>
