@@ -1,0 +1,22 @@
+:root{
+--lightbeigh0:#F9F8F6; 
+--lightbeigh1:#EFE9E3; 
+--lightbrown:#D9CFC7;
+--darkgray:#A3968D;
+}
+.main{
+text-align: center;
+background-color:var(--lightbeigh0);
+
+}
+
+
+.about{
+background-color:var(--lightbeigh1);
+margin-bottom:5px;
+}
+
+.contact{
+
+background-color:var(--darkgray);
+}
