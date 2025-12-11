@@ -91,3 +91,8 @@ body {
     background-color:var(--darkgray);
     color:var(--lightbeigh0);
 }
+
+/* גלילה חלקה כלוחצים על קישור */
+html { 
+    scroll-behavior: smooth; 
+}
