@@ -13,7 +13,7 @@
     <h1>ברוכה הבאה לסטודיו של מיכל</h1>
     <h3>אנא מלאו את הפרטים הבאים:</h3>
 
-    <form action="login.html" onsubmit="alert('ההרשמה בוצעה בהצלחה! מועבר להתחברות...');">
+    <form id="registrationForm">
         
         <div>
             <label for="firstName">שם פרטי:</label><br>
@@ -41,9 +41,8 @@
 
         <div>
             <label>מספר טלפון:</label><br>
-            
             <div style="direction: ltr; display: flex; justify-content: flex-end; gap: 5px;">
-                <select name="phonePrefix" required>
+                <select id="phonePrefix" name="phonePrefix" required>
                     <option value="050">050</option>
                     <option value="052">052</option>
                     <option value="053">053</option>
@@ -51,10 +50,8 @@
                     <option value="055">055</option>
                     <option value="058">058</option>
                 </select>
-                
                 - 
-
-                <input type="tel" name="phoneNumber" placeholder="המשך המספר" pattern="[0-9]{7}" required>
+                <input type="tel" id="phoneNumber" name="phoneNumber" placeholder="המשך המספר" pattern="[0-9]{7}" required>
             </div>
         </div>
         <br>
@@ -80,16 +77,16 @@
         <div>
             <label>האם מתאמן באופן קבוע?</label><br>
             
-            <input type="radio" id="habit1" name="trainingHabits" value="over_8" required>
+            <input type="radio" id="habit1" name="trainingHabits" value="מתאמן מעל 8 אימונים" required>
             <label for="habit1">מתאמן מעל 8 אימונים בחודש</label><br>
 
-            <input type="radio" id="habit2" name="trainingHabits" value="between_4_8">
+            <input type="radio" id="habit2" name="trainingHabits" value="מתאמן 4-8 אימונים">
             <label for="habit2">מתאמן בין 4-8 אימונים בחודש</label><br>
 
-            <input type="radio" id="habit3" name="trainingHabits" value="regular">
+            <input type="radio" id="habit3" name="trainingHabits" value="מתאמן קבוע">
             <label for="habit3">מתאמן באופן קבוע</label><br>
 
-            <input type="radio" id="habit4" name="trainingHabits" value="not_training">
+            <input type="radio" id="habit4" name="trainingHabits" value="לא מתאמן">
             <label for="habit4">לא מתאמן כרגע</label>
         </div>
         <br>
@@ -106,12 +103,7 @@
             <textarea id="comments" name="comments" rows="4" cols="50"></textarea>
         </div>
         <br>
-
-        <div>
-            <label for="profilePic">העלאת תמונת פרופיל:</label><br>
-            <input type="file" id="profilePic" name="profilePic" accept="image/*">
-        </div>
-        <br>
+        
         <button type="submit">הרשמה</button>
 
     </form>
@@ -123,18 +115,76 @@
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>
     <script>
         
-        // 2. טעינת ה-Navbar
+        // טעינת ה-Navbar
         fetch('navbar.html')
             .then(response => response.text())
             .then(data => {
                 document.getElementById('navbar-placeholder').innerHTML = data;
             });
         
+        // טעינת הפוטר
         fetch('footer.html')
             .then(response => response.text())
             .then(data => {
                 document.getElementById('footer-placeholder').innerHTML = data;
             });
+
+        // --- הסקריפט לשמירת *כל* הנתונים בזיכרון הדפדפן ---
+        document.getElementById('registrationForm').addEventListener('submit', function(e) {
+            e.preventDefault(); 
+
+            // 1. בדיקת התאמת סיסמאות
+            const password = document.getElementById('password').value;
+            const confirmPassword = document.getElementById('confirmPassword').value;
+            
+            if (password !== confirmPassword) {
+                alert('הסיסמאות אינן תואמות!');
+                return; 
+            }
+
+            // 2. איסוף כל הנתונים מהשדות
+            const firstName = document.getElementById('firstName').value;
+            const lastName = document.getElementById('lastName').value;
+            const birthdate = document.getElementById('birthdate').value;
+            const city = document.getElementById('city').value;
+            
+            // יצירת מספר טלפון מלא
+            const phonePrefix = document.getElementById('phonePrefix').value;
+            const phoneNumber = document.getElementById('phoneNumber').value;
+            const fullPhone = phonePrefix + '-' + phoneNumber;
+            
+            const email = document.getElementById('email').value;
+            
+            // מציאת הרגל האימון שנבחר
+            let habit = "";
+            const selectedHabit = document.querySelector('input[name="trainingHabits"]:checked');
+            if (selectedHabit) {
+                habit = selectedHabit.value;
+            }
+
+            const comments = document.getElementById('comments').value;
+
+            // 3. שמירה ב-LocalStorage (כל שדה נשמר בנפרד)
+            // נתונים קריטיים להתחברות
+            localStorage.setItem('userEmail', email);
+            localStorage.setItem('userPassword', password);
+            localStorage.setItem('userName', firstName); // כדי להגיד "שלום X" בהתחברות
+
+            // נתונים נוספים (נשמרים ברקע למקרה שנצטרך אותם בעתיד)
+            localStorage.setItem('userLastName', lastName);
+            localStorage.setItem('userBirthdate', birthdate);
+            localStorage.setItem('userCity', city);
+            localStorage.setItem('userPhone', fullPhone);
+            localStorage.setItem('userHabit', habit);
+            localStorage.setItem('userComments', comments);
+
+            // 4. הודעת הצלחה ומעבר
+            alert('ההרשמה בוצעה בהצלחה! כל הפרטים נשמרו במערכת. מועבר להתחברות...');
+            
+            setTimeout(function() {
+                window.location.href = "login.html";
+            }, 500);
+        });
     </script>
 
 </body>
