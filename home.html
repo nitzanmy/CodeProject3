@@ -7,22 +7,21 @@
     <link rel="stylesheet" href="home.css">
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
-    <!--for fonts from google-->    
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Bebas+Neue&family=Cormorant:ital,wght@0,300..700;1,300..700&family=EB+Garamond:ital,wght@0,400..800;1,400..800&family=Kedebideri:wght@400;500;600;700;800;900&family=Noto+Sans+Hebrew:wght@100..900&family=Noto+Serif+Display:ital,wght@0,100..900;1,100..900&family=Nunito:ital,wght@0,200..1000;1,200..1000&family=Open+Sans:ital,wght@0,300..800;1,300..800&family=Oswald:wght@200..700&family=Playwrite+NZ+Guides&family=Playwrite+US+Trad+Guides&family=Roboto+Condensed:ital,wght@0,100..900;1,100..900&family=Roboto+Mono:ital,wght@0,100..700;1,100..700&family=Science+Gothic:wght@100..900&display=swap" rel="stylesheet">
     
     <style>
-  
+      /* הוספתי רק את הגלילה החלקה */
+      html { scroll-behavior: smooth; }
     </style>
 </head>
 <body>
  
-    <div id="navbar-placeholder"></div> <!--for menu-->
-
-<div class="main">
+    <div id="navbar-placeholder"></div> <div class="main">
 <img src="./images/תמונה לדף בית.jpg" alt="Michal" class="full-width-img">
-   <div class="about">
+   
+   <div class="about" id="about">
     <h1>מיכל אבידן</h1>
     <p>
         מורה לחינוך גופני בעלת תואר ראשון B.ed משנת 1991 ומלמדת בתיכון הראל במבשרת ציון כבר 21 שנה.
@@ -37,63 +36,60 @@
     </p>
    </div> 
 
-<div class="typeOfClasses"> <!--הסבר על כל סוג שיעור-->
-<div class="bigBall" style="width: 18rem;">
+<div class="typeOfClasses"> <div class="bigBall" id="class-bigball" style="width: 18rem;">
   <img src="images/כדור גדול2.jpeg"
    class="card-img-top" alt="Exercise with big ball">
   <div class="card-body">
-    <p class="card-text">פילאטיס עם כדור גדול
+    <p class="card-text" id="text-class-bigball">פילאטיס עם כדור גדול</p>
   </div>
 </div>
 
-<div class="smallBall" style="width: 18rem;">
+<div class="smallBall" id="class-smallball" style="width: 18rem;">
   <img src="./images/כדור קטן.jpg" class="card-img-top" alt="Exercise with small ball">
   <div class="card-body">
-    <p class="card-text">פילאטיס עם כדור קטן</p>
+    <p class="card-text" id="text-class-smallball">פילאטיס עם כדור קטן</p>
   </div>
 </div>
 
 
-<div class="balanceDisc" style="width: 18rem;">
+<div class="balanceDisc" id="class-pita" style="width: 18rem;">
   <img src="images/פיתה.jpeg" class="card-img-top" alt="Exercise with pilates balance disc">
   <div class="card-body">
-    <p class="card-text">פילאטיס עם פיתה</p>
+    <p class="card-text" id="text-class-pita">פילאטיס עם פיתה</p>
   </div>
 </div>
 
-<div class="roller" style="width: 18rem;">
+<div class="roller" id="class-roller" style="width: 18rem;">
   <img src="./images/גליל חתוך.jpg" class="card-img-top" alt="Exercise with roller">
   <div class="card-body">
-    <p class="card-text">פילאטיס עם גליל</p>
+    <p class="card-text" id="text-class-roller">פילאטיס עם גליל</p>
   </div>
 </div>
 
-<div class="stretching" style="width: 18rem;">
+<div class="stretching" id="class-stretching" style="width: 18rem;">
   <img src="./images/מתיחות.jpeg" class="card-img-top" alt="Stretching exercise">
   <div class="card-body">
-    <p class="card-text">שיעור מתיחות</p>
+    <p class="card-text" id="text-class-stretching">שיעור מתיחות</p>
   </div>
 </div>
 
-<div class="weights" style="width: 18rem;">
+<div class="weights" id="class-weights" style="width: 18rem;">
   <img src="./images/משקולות.jpeg" class="card-img-top" alt="Exercise with weights">
   <div class="card-body">
-    <p class="card-text">פילאטיס עם משקולות</p>
+    <p class="card-text" id="text-class-weights">פילאטיס עם משקולות</p>
   </div>
 </div>
 
-
-<div class="matPilates" style="width: 18rem;">
+<div class="matPilates" id="class-mat" style="width: 18rem;">
   <img src="./images/פילאטיס מזרן.jpeg" class="card-img-top" alt="pilates with mat">
   <div class="card-body">
-    <p class="card-text">פילאטיס מזרן קלאסי</p>
+    <p class="card-text" id="text-class-mat">פילאטיס מזרן קלאסי</p>
   </div>
 </div>
 
 </div>
 
-
-   <div class="contact">
+   <div class="contact" id="contact">
     <h3>צור קשר</h3>
     <p>
         כתובת: נוף הרים 59ב, הר אדר
@@ -106,62 +102,30 @@
 
 </div>
 
-    <div id="footer-placeholder"></div> <!--for footer-->
-    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>
+    <div id="footer-placeholder"></div> <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>
 
     <script>
-       // טעינת ה-Navbar
-    fetch('navbar.html')
-        .then(response => response.text())
-        .then(data => {
-            document.getElementById('navbar-placeholder').innerHTML = data;
+        // טעינת ה-Navbar
+        fetch('navbar.html').then(r => r.text()).then(d => {
+            document.getElementById('navbar-placeholder').innerHTML = d;
             
-      updateAuthButton(); // הפעלה
-        });
-
-    // פונקציה לבדיקת מצב התחברות
-    function updateAuthButton() {
-        const userName = localStorage.getItem('userName');
-        // בדיקה האם הדגל 'isLoggedIn' קיים ושווה ל-'true'
-        const isLoggedIn = localStorage.getItem('isLoggedIn'); 
-
-        const authBtn = document.getElementById('authBtn');
-
-        // התנאי השתנה: מציג את השם רק אם המשתמש באמת מחובר
-        if (authBtn && userName && isLoggedIn === 'true') {
+            // הפעלת לוגיקת הכפתור
+            if (typeof updateAuthButton === 'function') updateAuthButton();
             
-            authBtn.textContent = 'שלום, ' + userName;
-            
-            // שינוי עיצוב לשקוף
-            authBtn.classList.remove('btn-brand');
-            authBtn.classList.add('btn-outline-brand');
-            
-            authBtn.href = "#"; 
-            
-            // --- לוגיקת התנתקות חדשה ---
-            authBtn.onclick = function() {
-                if(confirm('האם ברצונך להתנתק?')) {
-                    
-                    // מוחקים רק את הדגל "מחובר"
-                    localStorage.removeItem('isLoggedIn');
-                    
-                    // אבל *לא* מוחקים את userName, userEmail וכו'
-                    // ככה המשתמש נשמר בזיכרון, אבל האתר חושב שהוא יצא
-                    
-                    window.location.href = "login.html"; // מעבר לדף התחברות
+            // --- תוספת חשובה: תיקון הקישורים ---
+            // זה גורם ללחיצה על "אודות" לגלוש למטה במקום לטעון מחדש את הדף
+            const links = document.querySelectorAll('.navbar-nav a, .dropdown-menu a');
+            links.forEach(link => {
+                const href = link.getAttribute('href');
+                if (href && href.includes('home.html#')) {
+                    link.setAttribute('href', href.replace('home.html', ''));
                 }
-            };
-        }
-    }
-    
-    // טעינת הפוטר (נשאר אותו דבר)
-    fetch('footer.html')
-        .then(response => response.text())
-        .then(data => {
-            document.getElementById('footer-placeholder').innerHTML = data;
+            });
         });
+        
+        // טעינת הפוטר
+        fetch('footer.html').then(r => r.text()).then(d => document.getElementById('footer-placeholder').innerHTML = d);
 
     </script>
-
 </body>
 </html>
