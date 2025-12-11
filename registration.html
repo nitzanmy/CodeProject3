@@ -120,7 +120,45 @@
             .then(response => response.text())
             .then(data => {
                 document.getElementById('navbar-placeholder').innerHTML = data;
-            });
+                 
+              
+      updateAuthButton(); // הפעלה
+        });
+
+    // פונקציה לבדיקת מצב התחברות
+    function updateAuthButton() {
+        const userName = localStorage.getItem('userName');
+        // בדיקה האם הדגל 'isLoggedIn' קיים ושווה ל-'true'
+        const isLoggedIn = localStorage.getItem('isLoggedIn'); 
+
+        const authBtn = document.getElementById('authBtn');
+
+        // התנאי השתנה: מציג את השם רק אם המשתמש באמת מחובר
+        if (authBtn && userName && isLoggedIn === 'true') {
+            
+            authBtn.textContent = 'שלום, ' + userName;
+            
+            // שינוי עיצוב לשקוף
+            authBtn.classList.remove('btn-brand');
+            authBtn.classList.add('btn-outline-brand');
+            
+            authBtn.href = "#"; 
+            
+            // --- לוגיקת התנתקות חדשה ---
+            authBtn.onclick = function() {
+                if(confirm('האם ברצונך להתנתק?')) {
+                    
+                    // מוחקים רק את הדגל "מחובר"
+                    localStorage.removeItem('isLoggedIn');
+                    
+                    // אבל *לא* מוחקים את userName, userEmail וכו'
+                    // ככה המשתמש נשמר בזיכרון, אבל האתר חושב שהוא יצא
+                    
+                    window.location.href = "login.html"; // מעבר לדף התחברות
+                }
+            };
+        }
+    }
         
         // טעינת הפוטר
         fetch('footer.html')
