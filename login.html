@@ -166,6 +166,8 @@
             .then(response => response.text())
             .then(data => {
                 document.getElementById('navbar-placeholder').innerHTML = data;
+                // עדכון הכפתור ב-Navbar (אם כבר יש משתמש מחובר)
+                updateAuthButton();
             });
             
         // טעינת ה-Footer
@@ -175,26 +177,46 @@
                 document.getElementById('footer-placeholder').innerHTML = data;
             });
 
-        // --- הסקריפט לאימות פרטים והתחברות ---
-        document.getElementById('loginForm').addEventListener('submit', function(e) {
-            e.preventDefault(); // מונע רענון של הדף
+        // --- פונקציית עדכון כפתור ה-Navbar (חייבת להיות גם כאן) ---
+        function updateAuthButton() {
+            const userName = localStorage.getItem('userName');
+            const isLoggedIn = localStorage.getItem('isLoggedIn');
+            const authBtn = document.getElementById('authBtn');
 
-            // קבלת הנתונים שהמשתמש הזין
+            if (authBtn && userName && isLoggedIn === 'true') {
+                authBtn.textContent = 'שלום, ' + userName;
+                authBtn.classList.remove('btn-brand');
+                authBtn.classList.add('btn-outline-brand');
+                authBtn.href = "#"; 
+                authBtn.onclick = function() {
+                    if(confirm('האם ברצונך להתנתק?')) {
+                        localStorage.removeItem('isLoggedIn'); // רק מסיר את הסטטוס
+                        location.reload(); 
+                    }
+                };
+            }
+        }
+
+        // --- לוגיקת התחברות (בטופס) ---
+        document.getElementById('loginForm').addEventListener('submit', function(e) {
+            e.preventDefault(); 
+
             const inputEmail = document.getElementById('email').value;
             const inputPassword = document.getElementById('password').value;
 
-            // בדיקת הנתונים מול הזיכרון (מה שנשמר בהרשמה)
+            // שליפת הנתונים מהזיכרון
             const storedEmail = localStorage.getItem('userEmail');
             const storedPassword = localStorage.getItem('userPassword');
             const storedName = localStorage.getItem('userName');
 
-            // בדיקה האם הכל תואם
+            // בדיקת התאמה
             if (inputEmail === storedEmail && inputPassword === storedPassword) {
-                // הצלחה
-                alert('היי ' + (storedName || 'משתמש') + ', התחברת בהצלחה!');
-                window.location.href = "home.html"; // מעבר לדף הבית
+                // יצירת ה"דגל" שמסמן שהמשתמש מחובר
+                localStorage.setItem('isLoggedIn', 'true');
+                
+                alert('היי ' + storedName + ', התחברת בהצלחה!');
+                window.location.href = "home.html"; 
             } else {
-                // כישלון
                 alert('שגיאה: אימייל או סיסמא לא נכונים (נסה להירשם קודם).');
             }
         });
