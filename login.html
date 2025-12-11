@@ -9,55 +9,72 @@
     <style>
         body {
             font-family: Arial, sans-serif;
-            text-align: center;
             margin: 0;
-            padding: 20px;
+            padding: 0;
+            background-color: #f9f9f9;
         }
 
-        .top-image {
-            max-width: 300px;
-            width: 100%;
-            height: auto;
-            border-radius: 10px;
-            margin-bottom: 10px;
+        .main-container {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            gap: 40px;
+            padding: 40px 20px;
+            flex-wrap: wrap; 
+            max-width: 1200px;
+            margin: 0 auto;
+        }
+
+        .login-section {
+            flex: 1;
+            max-width: 400px; 
+            text-align: center;
+        }
+
+        .image-wrapper {
+            display: flex;
+            justify-content: center;
+        }
+
+        .vertical-image {
+            max-height: 500px;
+            width: auto;
+            max-width: 100%;
+            border-radius: 15px;
+            box-shadow: 0 4px 12px rgba(0,0,0,0.1);
         }
 
         .login-box {
             border: 1px solid #ccc;
             padding: 30px;
             border-radius: 15px;
-            max-width: 400px;
-            margin: 20px auto;
-            box-shadow: 0 4px 8px rgba(0,0,0,0.1);
             background-color: #fff;
+            box-shadow: 0 4px 8px rgba(0,0,0,0.1);
+            margin-top: 20px;
         }
 
-        /* --- השינוי הגדול נמצא כאן --- */
-        /* מחלקה לשורה בטופס שמחזיקה גם תווית וגם שדה */
         .form-row {
-            display: flex;         /* מסדר את האלמנטים בשורה אחת */
-            align-items: center;   /* מוודא שהם מיושרים לגובה (אמצע) */
-            margin-bottom: 15px;   /* רווח בין השורות */
+            display: flex;
+            align-items: center;
+            margin-bottom: 15px;
         }
 
-        /* עיצוב הכיתוב (אימייל/סיסמא) */
         .form-row label {
-            width: 80px;           /* רוחב קבוע לכיתוב כדי שהתיבות יתחילו באותו קו */
-            margin-left: 10px;     /* רווח קטן בין המילה לתיבה */
+            width: 80px;
+            margin-left: 10px;
             font-weight: bold;
-            text-align: right;     /* יישור הטקסט לימין */
+            text-align: right;
         }
 
-        /* עיצוב תיבת הטקסט */
         .form-row input {
-            flex: 1;               /* התיבה תתפוס את כל המקום שנשאר בשורה */
+            flex: 1;
             padding: 8px;
             border: 1px solid #ddd;
             border-radius: 5px;
         }
-        /* --------------------------- */
 
-        button {
+        /* התיקון החשוב לכפתורים */
+        .login-box button {
             padding: 10px 20px;
             background-color: #333;
             color: white;
@@ -69,7 +86,7 @@
             margin-top: 10px;
         }
 
-        button:hover {
+        .login-box button:hover {
             background-color: #555;
         }
 
@@ -87,42 +104,54 @@
             font-size: 14px;
             color: #666;
             text-decoration: none;
-            text-align: left; /* הזזתי את "שכחתי סיסמא" לצד שמאל שייראה טבעי */
+            text-align: left;
+        }
+
+        h1 {
+            color: #333;
+            margin-bottom: 20px;
         }
     </style>
 </head>
 <body>
 
-    <img src="images/loginPhoto.jpg" alt="מיכל פילאטיס" class="top-image">
+    <div id="navbar-placeholder"></div>
 
-    <h1>ברוכים הבאים לפילאטיס של מיכל</h1>
-
-    <div class="login-box">
+    <div class="main-container">
         
-        <form action="home.html">
-            
-            <div class="form-row">
-                <label for="email">אימייל:</label>
-                <input type="email" id="email" required placeholder="הכנס אימייל">
+        <div class="login-section">
+            <h1>ברוכים הבאים לסטודיו</h1>
+
+            <div class="login-box">
+                <form id="loginForm">
+                    <div class="form-row">
+                        <label for="email">אימייל:</label>
+                        <input type="email" id="email" required placeholder="הכנס אימייל">
+                    </div>
+
+                    <div class="form-row">
+                        <label for="password">סיסמא:</label>
+                        <input type="password" id="password" required placeholder="הכנס סיסמא">
+                    </div>
+
+                    <a href="#" class="forgot-pass">שכחתי סיסמא</a>
+
+                    <button type="submit">התחברות</button>
+                </form>
+
+                <hr style="margin: 20px 0;">
+
+                <div>
+                    <p>אין משתמש?</p>
+                    <a href="registration.html">
+                        <button class="secondary-btn">רוצה להירשם</button>
+                    </a>
+                </div>
             </div>
+        </div>
 
-            <div class="form-row">
-                <label for="password">סיסמא:</label>
-                <input type="password" id="password" required placeholder="הכנס סיסמא">
-            </div>
-
-            <a href="#" class="forgot-pass">שכחתי סיסמא</a>
-
-            <button type="submit">התחברות</button>
-        </form>
-
-        <hr style="margin: 20px 0;">
-
-        <div>
-            <p>אין משתמש?</p>
-            <a href="registration.html">
-                <button class="secondary-btn">רוצה להירשם</button>
-            </a>
+        <div class="image-wrapper">
+            <img src="images/כדור גדול1.jpeg" alt="פילאטיס כדור גדול" class="vertical-image">
         </div>
 
     </div>
@@ -132,18 +161,43 @@
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>
 
     <script>
-        
+        // טעינת ה-Navbar
         fetch('navbar.html')
             .then(response => response.text())
             .then(data => {
                 document.getElementById('navbar-placeholder').innerHTML = data;
             });
             
+        // טעינת ה-Footer
         fetch('footer.html')
             .then(response => response.text())
             .then(data => {
                 document.getElementById('footer-placeholder').innerHTML = data;
             });
+
+        // --- הסקריפט לאימות פרטים והתחברות ---
+        document.getElementById('loginForm').addEventListener('submit', function(e) {
+            e.preventDefault(); // מונע רענון של הדף
+
+            // קבלת הנתונים שהמשתמש הזין
+            const inputEmail = document.getElementById('email').value;
+            const inputPassword = document.getElementById('password').value;
+
+            // בדיקת הנתונים מול הזיכרון (מה שנשמר בהרשמה)
+            const storedEmail = localStorage.getItem('userEmail');
+            const storedPassword = localStorage.getItem('userPassword');
+            const storedName = localStorage.getItem('userName');
+
+            // בדיקה האם הכל תואם
+            if (inputEmail === storedEmail && inputPassword === storedPassword) {
+                // הצלחה
+                alert('היי ' + (storedName || 'משתמש') + ', התחברת בהצלחה!');
+                window.location.href = "home.html"; // מעבר לדף הבית
+            } else {
+                // כישלון
+                alert('שגיאה: אימייל או סיסמא לא נכונים (נסה להירשם קודם).');
+            }
+        });
     </script>
 
 </body>
