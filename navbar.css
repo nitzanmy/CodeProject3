@@ -16,9 +16,9 @@
         color: white;
     }
     .btn-brand:hover {
-        background-color: #7d6b57; 
-        border-color: #7d6b57;
-        color: white;
+        background-color: var(--lightbeigh0);
+        border: 1.15px solid var(--button);
+        color:var(--button);
     }
 
     /* עיצוב כפתור מחובר (שקוף עם מסגרת) */
