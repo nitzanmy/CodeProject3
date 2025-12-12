@@ -28,8 +28,9 @@
         border: 1px solid var(--button);
     }
     .btn-outline-brand:hover {
-        background-color: var(--button);
-        color: white;
+        background-color: var(--lightbeigh0);
+             border: 1.15px solid var(--button);
+             color:var(--button);
     }
 
     /* הגדרות כלליות לכפתור */
