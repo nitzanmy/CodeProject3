@@ -84,7 +84,7 @@
         .login-box button {
             padding: 10px 20px;
             background-color: var(--button);
-            color: white;
+            color: var(--lightbeigh0);
             border: none;
             border-radius: 5px;
             cursor: pointer;
@@ -95,7 +95,7 @@
 
         .login-box button:hover {
               background-color: var(--lightbeigh0);
-             border: 2px solid var(--button);
+             border: 1.5px solid var(--button);
              color:var(--button);
         }
 
