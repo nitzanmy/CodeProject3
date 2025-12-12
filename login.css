@@ -94,7 +94,9 @@
         }
 
         .login-box button:hover {
-            background-color: #555;
+              background-color: var(--lightbeigh0);
+             border: 2px solid var(--button);
+             color:var(--button);
         }
 
         .secondary-btn {
