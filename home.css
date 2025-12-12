@@ -1,9 +1,10 @@
 :root{
-    --lightbeigh0:#F9F8F6; 
+   --lightbeigh0:#F9F8F6; 
     --lightbeigh1:#EFE9E3; 
     --lightbrown:#D9CFC7;
     --darkgray:#A3968D;
     --logo:#968069;
+    --button:#A69079;
 }
 
 *{
@@ -15,8 +16,8 @@ body {
     padding: 0;
     width: 100%;
     overflow-x: hidden; 
-   
 }
+
 .main{
     margin: 0;
     padding: 0;
@@ -69,12 +70,10 @@ body {
 
 /* גובה קבוע לכל התמונות וחיתוך */
   .typeOfClasses .card-img-top {
-            width: 100%;       /* מילוי רוחב הכרטיס */
-            height:230px;
+    width: 100%;       
+    height:230px;
     display: block; 
-        border-radius:6px;
-        object-fit: cover;
-
+    object-fit: cover;
     }
 
 /* התאמה לתוכן הטקסט (card-text) */
@@ -83,7 +82,7 @@ body {
     text-align: center;
     color: var(--logo);
     font-weight: 600;
-   display: flex;
+    display: flex;
     justify-content: center; /* יישור אופקי */
     align-items: center;     /* יישור אנכי במרכז */
 }
@@ -96,3 +95,4 @@ body {
 html { 
     scroll-behavior: smooth; 
 }
+
