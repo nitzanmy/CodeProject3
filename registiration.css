@@ -1,0 +1,46 @@
+:root{
+     --lightbeigh0:#F9F8F6; 
+    --lightbeigh1:#EFE9E3; 
+    --lightbrown:#D9CFC7;
+    --darkgray:#A3968D;
+    --logo:#968069;
+    --button:#A69079;
+}
+
+*{
+     font-family:'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;
+}
+ 
+
+.registirationForm {
+    max-width: 650px; 
+    margin: 40px auto; 
+    padding: 30px; 
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.15);
+    background-color: var(--lightbeigh0);
+}
+
+
+.healthDeclarationButton button {
+    background-color: var(--button); 
+    color: var(--lightbeigh0); 
+    border: 1.5px solid var(--button); 
+}
+
+.healthDeclarationButton button:hover {
+      background-color: var(--lightlogo); 
+    color:var(--button) 
+}
+
+.submitButton {
+    display: inline-block; 
+    width: auto ; 
+    background-color: var(--button) ; 
+    color: var(--lightbeigh0); 
+    border: 1.5px solid var(--button); 
+}
+
+.submitButton:hover {
+    background-color: var(--lightlogo); 
+    color:var(--button)
+}
