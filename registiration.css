@@ -25,6 +25,7 @@
     background-color: var(--button); 
     color: var(--lightbeigh0); 
     border: 1.5px solid var(--button); 
+    border-radius: 4px;
 }
 
 .healthDeclarationButton button:hover {
@@ -38,6 +39,7 @@
     background-color: var(--button) ; 
     color: var(--lightbeigh0); 
     border: 1.5px solid var(--button); 
+    border-radius: 4px;
 }
 
 .submitButton:hover {
