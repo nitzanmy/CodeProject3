@@ -4,7 +4,7 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>מיכל פילאטיס</title>
-    <link rel="stylesheet" href="home.css">
+    <link rel="stylesheet" href="css/home.css">
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet">
     <style>
       /* לגלילה החלקה */
@@ -14,7 +14,7 @@
 <body>
  
     <div id="navbar-placeholder"></div> <div class="main">
-<img src="./images/תמונה לדף בית.jpg" alt="Michal" class="full-width-img">
+<img src="images/HomePage.jpg" alt="Michal" class="full-width-img">
    
    <div class="about" id="about">
     <h1>מיכל אבידן</h1>
@@ -32,7 +32,7 @@
    </div> 
 
 <div class="typeOfClasses"> <div class="bigBall" id="class-bigball" style="width: 18rem;">
-  <img src="images/כדור גדול2.jpeg"
+  <img src="images/BigBall2.jpeg"
    class="card-img-top" alt="Exercise with big ball">
   <div class="card-body">
     <p class="card-text" id="text-class-bigball">פילאטיס עם כדור גדול</p>
@@ -40,7 +40,7 @@
 </div>
 
 <div class="smallBall" id="class-smallball" style="width: 18rem;">
-  <img src="./images/כדור קטן.jpg" class="card-img-top" alt="Exercise with small ball">
+  <img src="images/SmallBall.jpg" class="card-img-top" alt="Exercise with small ball">
   <div class="card-body">
     <p class="card-text" id="text-class-smallball">פילאטיס עם כדור קטן</p>
   </div>
@@ -48,35 +48,35 @@
 
 
 <div class="balanceDisc" id="class-pita" style="width: 18rem;">
-  <img src="images/פיתה.jpeg" class="card-img-top" alt="Exercise with pilates balance disc">
+  <img src="images/Pita.jpeg" class="card-img-top" alt="Exercise with pilates balance disc">
   <div class="card-body">
     <p class="card-text" id="text-class-pita">פילאטיס עם פיתה</p>
   </div>
 </div>
 
 <div class="roller" id="class-roller" style="width: 18rem;">
-  <img src="./images/גליל חתוך.jpg" class="card-img-top" alt="Exercise with roller">
+  <img src="images/Roller.jpg" class="card-img-top" alt="Exercise with roller">
   <div class="card-body">
     <p class="card-text" id="text-class-roller">פילאטיס עם גליל</p>
   </div>
 </div>
 
 <div class="stretching" id="class-stretching" style="width: 18rem;">
-  <img src="./images/מתיחות.jpeg" class="card-img-top" alt="Stretching exercise">
+  <img src="images/Stretching.jpeg" class="card-img-top" alt="Stretching exercise">
   <div class="card-body">
     <p class="card-text" id="text-class-stretching">שיעור מתיחות</p>
   </div>
 </div>
 
 <div class="weights" id="class-weights" style="width: 18rem;">
-  <img src="./images/משקולות.jpeg" class="card-img-top" alt="Exercise with weights">
+  <img src="images/Weights.jpeg" class="card-img-top" alt="Exercise with weights">
   <div class="card-body">
     <p class="card-text" id="text-class-weights">פילאטיס עם משקולות</p>
   </div>
 </div>
 
 <div class="matPilates" id="class-mat" style="width: 18rem;">
-  <img src="./images/פילאטיס מזרן.jpeg" class="card-img-top" alt="pilates with mat">
+  <img src="images/MatPilates.jpeg" class="card-img-top" alt="pilates with mat">
   <div class="card-body">
     <p class="card-text" id="text-class-mat">פילאטיס מזרן קלאסי</p>
   </div>
@@ -98,66 +98,7 @@
 </div>
 
     <div id="footer-placeholder"></div> <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>
-
-    <script>
-        // טעינת ה-Navbar
-        fetch('navbar.html').then(r => r.text()).then(d => {
-            document.getElementById('navbar-placeholder').innerHTML = d;
-            
-            // הפעלת לוגיקת הכפתור
-            if (typeof updateAuthButton === 'function') updateAuthButton();
-            
-            // --- תוספת חשובה: תיקון הקישורים ---
-            // זה גורם ללחיצה על "אודות" לגלוש למטה במקום לטעון מחדש את הדף
-            const links = document.querySelectorAll('.navbar-nav a, .dropdown-menu a');
-            links.forEach(link => {
-                const href = link.getAttribute('href');
-                if (href && href.includes('home.html#')) {
-                    link.setAttribute('href', href.replace('home.html', ''));
-                }
-            });
-
-         updateAuthButton(); // הפעלה
-        });
-
-    // פונקציה לבדיקת מצב התחברות
-    function updateAuthButton() {
-        const userName = localStorage.getItem('userName');
-        // בדיקה האם הדגל 'isLoggedIn' קיים ושווה ל-'true'
-        const isLoggedIn = localStorage.getItem('isLoggedIn'); 
-
-        const authBtn = document.getElementById('authBtn');
-
-        // התנאי השתנה: מציג את השם רק אם המשתמש באמת מחובר
-        if (authBtn && userName && isLoggedIn === 'true') {
-            
-            authBtn.textContent = 'שלום, ' + userName;
-            
-            // שינוי עיצוב לשקוף
-            authBtn.classList.remove('btn-brand');
-            authBtn.classList.add('btn-outline-brand');
-            
-            authBtn.href = "#"; 
-            
-            // --- לוגיקת התנתקות חדשה ---
-            authBtn.onclick = function() {
-                if(confirm('האם ברצונך להתנתק?')) {
-                    
-                    // מוחקים רק את הדגל "מחובר"
-                    localStorage.removeItem('isLoggedIn');
-                    
-                    // אבל *לא* מוחקים את userName, userEmail וכו'
-                    // ככה המשתמש נשמר בזיכרון, אבל האתר חושב שהוא יצא
-                    
-                    window.location.href = "login.html"; // מעבר לדף התחברות
-                }
-            };
-        }
-    }
-        
-        // טעינת הפוטר
-        fetch('footer.html').then(r => r.text()).then(d => document.getElementById('footer-placeholder').innerHTML = d);
-
-    </script>
+    <script src="js/main.js"></script>
+    <script src="js/home.js"></script>
 </body>
 </html>
