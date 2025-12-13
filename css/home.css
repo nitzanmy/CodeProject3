@@ -1,0 +1,97 @@
+:root{
+   --lightbeigh0:#F9F8F6; 
+    --lightbeigh1:#EFE9E3; 
+    --lightbrown:#D9CFC7;
+    --darkgray:#A3968D;
+    --logo:#968069;
+    --button:#A69079;
+}
+
+*{
+     font-family:'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;
+}
+
+body {
+    margin: 0; 
+    padding: 0;
+    width: 100%;
+    overflow-x: hidden; 
+}
+
+.main{
+    margin: 0;
+    padding: 0;
+    width: 100%;
+    overflow-x: hidden; 
+    text-align: center;
+    background-color:var(--lightbeigh0);
+     font-family:'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;
+}
+
+.full-width-img {
+    width: 100%; 
+    height: 15%;
+    height: auto;    
+    display: block;
+}   
+
+.about{
+    background-color:var(--lightbeigh1);
+    margin-bottom:5px;
+    color: var(--logo);
+}
+
+
+.typeOfClasses {
+    display: flex;       /* הפעלת Flexbox */
+    flex-wrap: wrap;     /* מאפשר מעבר לשורה חדשה */
+    justify-content: center; /* ממקם את התמונות במרכז השורה */
+    align-items:space-between;
+    align-content: center;
+    gap: 15px;           /* רווחים אחידים בין הכרטיסים */
+    padding:15px 0;
+    background-color: var(--lightbrown);
+}
+
+
+/*הגדרות לכל כרטיס (Flex Item) */
+.typeOfClasses > div {
+    flex-basis: 20em;
+    flex-shrink: 1; 
+    box-sizing: border-box;
+    /*  שוליים פנימיים ורקע לכרטיס עצמו */
+  
+    background-color:var(--lightbeigh1);
+    border-radius: 4px; /* פינות מעוגלות */
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1); /* צל קטן */
+}
+
+
+
+/* גובה קבוע לכל התמונות וחיתוך */
+  .typeOfClasses .card-img-top {
+    width: 100%;       
+    height:230px;
+    display: block; 
+    object-fit: cover;
+    }
+
+/* התאמה לתוכן הטקסט (card-text) */
+.typeOfClasses .card-text {
+    min-height: 40px; /* גובה מינימלי לטקסט */
+    text-align: center;
+    color: var(--logo);
+    font-weight: 600;
+    display: flex;
+    justify-content: center; /* יישור אופקי */
+    align-items: center;     /* יישור אנכי במרכז */
+}
+.contact{
+    background-color:var(--darkgray);
+    color:var(--lightbeigh0);
+}
+
+/* גלילה חלקה כלוחצים על קישור */
+html { 
+    scroll-behavior: smooth; 
+}

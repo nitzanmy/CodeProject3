@@ -1,0 +1,53 @@
+:root{
+    --lightbeigh0:#F9F8F6; 
+    --lightbeigh1:#EFE9E3; 
+    --lightbrown:#D9CFC7;
+    --darkgray:#A3968D;
+    --logo:#968069;
+    --button:#A69079;
+    
+}
+/* עיצוב כפתור המותג (חום מלא) */
+    .btn-brand {
+        background-color:var(--button); 
+        border-color:var(--button);
+        color: white;
+    }
+    .btn-brand:hover {
+        background-color: var(--lightbeigh0);
+        border: 1.15px solid var(--button);
+        color:var(--button);
+    }
+
+    /* עיצוב כפתור מחובר (שקוף עם מסגרת) */
+    .btn-outline-brand {
+        background-color: transparent;
+        color: var(--button);
+        border: 1px solid var(--button);
+    }
+    .btn-outline-brand:hover {
+        background-color: var(--lightbeigh0);
+             border: 1.15px solid var(--button);
+             color:var(--button);
+    }
+
+    /* הגדרות כלליות לכפתור */
+    #authBtn {
+        white-space: nowrap; 
+        min-width: 120px;
+    }
+
+    /* הגדרות למסך קטן */
+    @media (max-width: 991px) {
+        
+        #authBtn {
+            width: fit-content;
+            margin-top: 20px;     
+            margin-bottom: 15px;  
+        }
+        
+        .navbar-nav {
+            text-align: right; 
+            padding-right: 0;
+        }
+    }
