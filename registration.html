@@ -8,12 +8,13 @@
     <link rel="stylesheet" href="registiration.css">
 </head>
 <body>
-    <div id="navbar-placeholder"></div>
-    <div class="registirationForm">
-    <h1>ברוך הבא לסטודיו של מיכל</h1>
-    <h3>אנא מלא את הפרטים הבאים:</h3>
+   <div id="navbar-placeholder"></div>
 
-    <form id="registration-Form" novalidate>
+    <h1>ברוכה הבאה לסטודיו של מיכל</h1>
+    <h3>אנא מלאו את הפרטים הבאים:</h3>
+
+    <form id="registrationForm" novalidate>
+        
         <div>
             <label for="firstName">שם פרטי:</label><br>
             <input type="text" id="firstName" name="firstName" placeholder="ישראל" required>
@@ -90,30 +91,30 @@
             <label for="habit2">מתאמן בין 4-8 אימונים בחודש</label><br>
 
             <input type="radio" id="habit3" name="trainingHabits" value="מתאמן קבוע">
-            <label for="habit3">מתאמן פחות מ4 פעמים בחודש</label><br>
+            <label for="habit3">מתאמן באופן קבוע</label><br>
 
             <input type="radio" id="habit4" name="trainingHabits" value="לא מתאמן">
-            <label for="habit4">לא מתאמן</label>
+            <label for="habit4">לא מתאמן כרגע</label>
         </div>
         <br>
 
-        <div class="healthDeclarationButton"> 
+        <div>
             <a href="https://docs.google.com/forms/d/e/1FAIpQLSfmtBn1AUXFf8qQMP3BC6aQK7Z-2mbS54zbtnt8jqQ1V9ldVA/viewform" target="_blank">
-             <button type="button">נא למלא את הצהרת הבריאות</button>
+                <button type="button">נא למלא את הצהרת הבריאות</button>
             </a>
         </div>
         <br>
 
-        <div class="comments">
+        <div>
             <label for="comments">הערות נוספות:</label><br>
             <textarea id="comments" name="comments" rows="4" cols="50" placeholder="הערות מיוחדות, פציעות עבר וכו'"></textarea>
         </div>
         <br>
         
-        <button class="submitButton" type="submit">הרשמה</button>
+        <button type="submit">הרשמה</button>
 
     </form>
-</div>
+
     <hr>
     
     <div id="footer-placeholder"></div>
